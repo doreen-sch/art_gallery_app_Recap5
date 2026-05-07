@@ -6,9 +6,9 @@ const URL = "https://example-apis.vercel.app/api/art";
 const fetcher = async (url) => {
   const response = await fetch(url);
   // console.log("Raw responseponse:", response);
-  const data = await response.json();
+  // const data = await response.json();
 
-  console.log("responseponse data:", data);
+  // console.log("responseponse data:", data);
   if (!response.ok) {
     const error = new Error("An error occurred while fetching the data.");
     error.info = await response.json();
@@ -20,12 +20,15 @@ const fetcher = async (url) => {
 };
 
 export default function App({ Component, pageProps }) {
-  const { data: pieces } = useSWR(URL, fetcher);
-  console.log("Text:", pieces);
+  const { data: pieces, isLoading, error } = useSWR(URL, fetcher);
+
+  if (isLoading || !pieces) return <p>Is Loading...</p>;
+  if (error) return <p>Error: Something went wrong!</p>;
+
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} pieces={pieces} />
+      <Component {...pageProps} title={pieces.title} artist={pieces.artist} />
     </>
   );
 }

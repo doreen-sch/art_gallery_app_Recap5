@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import ArtPiecesPreview from "../ArtPiecesPreview";
+import Spotlight from "../Spotlight";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -14,7 +15,7 @@ const fetcher = async (url) => {
   return res.json();
 };
 
-export default function ArtPieces() {
+export default function ArtPieces({}) {
   const { data: artPieces, error, isLoading } = useSWR(URL, fetcher);
 
   if (isLoading || !artPieces) return <p>Loading artworks...</p>;
@@ -31,6 +32,7 @@ export default function ArtPieces() {
           />
         </li>
       ))}
+      <Spotlight artPieces={artPieces} />
     </ul>
   );
 }

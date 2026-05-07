@@ -9,6 +9,7 @@ export default function ArtPiecesPreview({ image, title, artist }) {
         alt={`Artwork titled ${title} by ${artist}`}
         width={500}
         height={500}
+        priority
       />
       <figcaption>
         <h3>{title}</h3>

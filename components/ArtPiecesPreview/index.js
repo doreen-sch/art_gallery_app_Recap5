@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function ArtPiecesPreview({ image, title, artist }) {
-  console.log(title);
   return (
     <figure>
       <Image

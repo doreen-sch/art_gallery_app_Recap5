@@ -20,7 +20,7 @@ export default function DetailsPage() {
     return (
       <div>
         <h1>Art piece not found</h1>
-        <p>The slug "{slug}" does not match any items in our gallery.</p>
+        <p>Gallery item not found.</p>
       </div>
     );
   }

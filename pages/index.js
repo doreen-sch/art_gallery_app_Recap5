@@ -1,7 +1,10 @@
-export default function HomePage() {
+import ArtPieces from "@/components/ArtPieces";
+
+export default function HomePage({ pieces }) {
   return (
     <div>
-      <h1>Hello from Next.js</h1>
+      <h1>Art Gallery</h1>
+      <ArtPieces />
     </div>
   );
 }

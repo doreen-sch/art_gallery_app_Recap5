@@ -29,10 +29,10 @@ export default function ArtPieces() {
   return (
     <ul>
       {artPieces.map((piece) => (
-        <li key={piece.id}>
+        <li key={piece.slug}>
           <ArtPiecesPreview
-            image={piece.image}
-            title={piece.title}
+            image={piece.imageSource}
+            title={piece.name}
             artist={piece.artist}
           />
         </li>

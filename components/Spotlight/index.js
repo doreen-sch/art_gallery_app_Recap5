@@ -1,5 +1,7 @@
 import Image from "next/image";
+import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton";
+import { useState } from "react";
 
 function getRandomArtPiece(artworks) {
   if (!artworks || artworks.length === 0) return null;
@@ -7,23 +9,49 @@ function getRandomArtPiece(artworks) {
   return artworks[randomIndex];
 }
 
-export default function Spotlight({ pieces }) {
-  const spotlightPiece = getRandomArtPiece(pieces);
+export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
+  // console.log("kunst", pieces);
+  const [spotlightPiece] = useState(() => getRandomArtPiece(pieces));
 
   if (!spotlightPiece) return <p>Loading ...</p>;
 
-  return (
-    <div>
-      <FavoriteButton />
-      <Image
-        src={spotlightPiece.imageSource}
-        alt={`Artwork titled ${spotlightPiece.title} by ${spotlightPiece.artist}`}
-        width={500}
-        height={500}
-        priority
-      />
+  const spotlightInfo = artPiecesInfo?.find(
+    (p) => p.slug === spotlightPiece.slug
+  );
+  const isFavorite = spotlightInfo?.isFavorite ?? false;
 
-      <p>{spotlightPiece.artist}</p>
-    </div>
+  return (
+    <ul>
+      <StyledSpotlight $isFavorite={isFavorite}>
+        <Image
+          src={spotlightPiece.imageSource}
+          alt={`Artwork titled ${spotlightPiece.title} by ${spotlightPiece.artist}`}
+          width={500}
+          height={500}
+          priority
+        />
+        <StyledSpotlightCaption style={{ padding: "1rem" }}>
+          <p>{spotlightPiece.artist}</p>
+          <FavoriteButton
+            isFavorite={isFavorite}
+            onToggleFavorite={() => onToggleFavorite(spotlightPiece.slug)}
+          />
+        </StyledSpotlightCaption>
+      </StyledSpotlight>
+    </ul>
   );
 }
+
+const StyledSpotlight = styled.article`
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: ${({ $isFavorite }) => ($isFavorite ? "#fce5e8" : "white")};
+  width: 500px;
+`;
+
+const StyledSpotlightCaption = styled.article`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

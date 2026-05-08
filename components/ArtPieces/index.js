@@ -1,5 +1,22 @@
+import styled from "styled-components";
 import useSWR from "swr";
 import ArtPiecesPreview from "../ArtPiecesPreview";
+import Spotlight from "../Spotlight";
+
+const URL = "https://example-apis.vercel.app/api/art";
+
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    const error = new Error("An error occurred while fetching the data.");
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
+  }
+  return res.json();
+};
+
+export default function ArtPieces({}) {
 import fetcher from "@/lib/fetcher";
 
 const URL = "https://example-apis.vercel.app/api/art";
@@ -11,7 +28,7 @@ export default function ArtPieces() {
   if (error) return <p>Something went wrong fetching the art.</p>;
 
   return (
-    <ul>
+    <StyledArtList>
       {artPieces.map((piece) => (
         <li key={piece.slug}>
           <ArtPiecesPreview
@@ -22,6 +39,11 @@ export default function ArtPieces() {
           />
         </li>
       ))}
-    </ul>
+      <Spotlight artPieces={artPieces} />
+    </StyledArtList>
   );
 }
+
+const StyledArtList = styled.ul`
+  list-style: none;
+`;

@@ -13,6 +13,9 @@ export default function Navigation() {
       <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
         Gallery
       </StyledLink>
+       <StyledLink href="/favorites" $isActive={router.pathname === "/favorites"}>
+        Favorites
+      </StyledLink>
     </StyledNavigation>
   );
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+//import fetcher from "@/lib/fetcher";
 import useSWR from "swr";
 import ArtPiecesPreview from "../ArtPiecesPreview";
 import Spotlight from "../Spotlight";
@@ -15,11 +16,6 @@ const fetcher = async (url) => {
   }
   return res.json();
 };
-
-export default function ArtPieces({}) {
-import fetcher from "@/lib/fetcher";
-
-const URL = "https://example-apis.vercel.app/api/art";
 
 export default function ArtPieces() {
   const { data: artPieces, error, isLoading } = useSWR(URL, fetcher);

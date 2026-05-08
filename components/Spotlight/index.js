@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 function getRandomArtPiece(artworks) {
@@ -7,14 +6,9 @@ function getRandomArtPiece(artworks) {
   return artworks[randomIndex];
 }
 
-export default function Spotlight({ artPieces }) {
-  const [spotlightPiece, setSpotlightPiece] = useState(null);
-
-  useEffect(() => {
-    const randomArtPiece = getRandomArtPiece(artPieces);
-
-    setSpotlightPiece(randomArtPiece);
-  }, [artPieces]);
+export default function Spotlight({ pieces }) {
+  console.log("kunst", pieces);
+  const spotlightPiece = getRandomArtPiece(pieces);
 
   if (!spotlightPiece) return <p>Loading ...</p>;
 
@@ -27,7 +21,7 @@ export default function Spotlight({ artPieces }) {
         height={500}
         priority
       />
-      <p>{spotlightPiece.name}</p>
+      <p>{spotlightPiece.artist}</p>
     </div>
   );
 }

@@ -44,6 +44,25 @@ export default function App({ Component, pageProps }) {
   //To prevent server-side rendering errors
   if (!isMounted) return null;
 
+  function handleAddComment(slug, newComment) {
+  const date = new Date().toLocaleDateString("de-DE"); // Matches your sketch (01.01.2020)
+  const time = new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+
+  setArtPiecesInfo((prevInfo) => {
+    const piece = prevInfo.find((p) => p.slug === slug);
+
+    if (piece) {
+      // Piece exists, add new comment to its existing comments array
+      return prevInfo.map((p) =>
+        p.slug === slug
+          ? { ...p, comments: [...(p.comments || []), { text: newComment, date, time }] }
+          : p
+      );
+    }
+       // Piece doesn't exist yet, create it with the first comment
+    return [...prevInfo, { slug, isFavorite: false, comments: [{ text: newComment, date, time }] }];
+  });
+}
   return (
     <>
       {" "}
@@ -55,6 +74,7 @@ export default function App({ Component, pageProps }) {
           /* artPieces={artPieces}   */
           artPiecesInfo={artPiecesInfo}
           onToggleFavorite={handleToggleFavorite}
+          onSubmitComment={handleAddComment}
         />
         <Navigation />
       </SWRConfig>

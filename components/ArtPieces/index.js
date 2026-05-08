@@ -29,7 +29,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
         </li>
       ))}
       <Spotlight artPieces={artPieces} />
-    </StyledArtList>
+    <StyledArtList/>
 </ul>
   );
 

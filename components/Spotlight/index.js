@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton";
 
 function getRandomArtPiece(artworks) {
   if (!artworks || artworks.length === 0) return null;
@@ -7,13 +8,13 @@ function getRandomArtPiece(artworks) {
 }
 
 export default function Spotlight({ pieces }) {
-  console.log("kunst", pieces);
   const spotlightPiece = getRandomArtPiece(pieces);
 
   if (!spotlightPiece) return <p>Loading ...</p>;
 
   return (
     <div>
+      <FavoriteButton />
       <Image
         src={spotlightPiece.imageSource}
         alt={`Artwork titled ${spotlightPiece.title} by ${spotlightPiece.artist}`}
@@ -21,6 +22,7 @@ export default function Spotlight({ pieces }) {
         height={500}
         priority
       />
+
       <p>{spotlightPiece.artist}</p>
     </div>
   );

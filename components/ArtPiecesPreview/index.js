@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
+import styled from "styled-components";
 
 export default function ArtPiecesPreview({
   image,
@@ -10,12 +11,9 @@ export default function ArtPiecesPreview({
   isFavorite,
   onToggleFavorite,
 }) {
+  console.log(title);
   return (
-    <figure>
-      <FavoriteButton
-        isFavorite={isFavorite}
-        onToggleFavorite={onToggleFavorite}
-      />
+    <StyledFigure $isFavorite={isFavorite}>
       <Link href={`/art-pieces/${slug}`}>
         <Image
           src={image}
@@ -25,10 +23,30 @@ export default function ArtPiecesPreview({
           priority
         />
       </Link>
-      <figcaption>
-        <h3>{title}</h3>
-        <p>Artist: {artist}</p>
-      </figcaption>
-    </figure>
+      <StyledFigcaption style={{ padding: "1rem" }}>
+        <article>
+          <h3>{title}</h3>
+          <p>Artist: {artist}</p>
+        </article>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
+      </StyledFigcaption>
+    </StyledFigure>
   );
 }
+
+const StyledFigure = styled.figure`
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: ${({ $isFavorite }) => ($isFavorite ? "#fce5e8" : "white")};
+  width: 500px;
+`;
+
+const StyledFigcaption = styled.figcaption`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

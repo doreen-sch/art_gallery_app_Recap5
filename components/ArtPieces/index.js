@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import useSWR from "swr";
 import ArtPiecesPreview from "../ArtPiecesPreview";
 import Spotlight from "../Spotlight";
@@ -22,7 +23,7 @@ export default function ArtPieces({}) {
   if (error) return <p>Something went wrong fetching the art.</p>;
 
   return (
-    <ul>
+    <StyledArtList>
       {artPieces.map((piece) => (
         <li key={piece.slug}>
           <ArtPiecesPreview
@@ -33,6 +34,10 @@ export default function ArtPieces({}) {
         </li>
       ))}
       <Spotlight artPieces={artPieces} />
-    </ul>
+    </StyledArtList>
   );
 }
+
+const StyledArtList = styled.ul`
+  list-style: none;
+`;

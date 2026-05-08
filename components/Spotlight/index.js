@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ArtPiecesPreview from "../ArtPiecesPreview";
+import Image from "next/image";
 
 function getRandomArtPiece(artworks) {
   if (!artworks || artworks.length === 0) return null;
@@ -8,12 +8,11 @@ function getRandomArtPiece(artworks) {
 }
 
 export default function Spotlight({ artPieces }) {
-  // console.log("art piece array", artPieces);
   const [spotlightPiece, setSpotlightPiece] = useState(null);
 
   useEffect(() => {
     const randomArtPiece = getRandomArtPiece(artPieces);
-    //  console.log("one random art piece", randomArtPiece);
+
     setSpotlightPiece(randomArtPiece);
   }, [artPieces]);
 
@@ -21,12 +20,14 @@ export default function Spotlight({ artPieces }) {
 
   return (
     <div>
-      <p>{spotlightPiece.name}</p>
-      <ArtPiecesPreview
-        image={spotlightPiece.imageSource}
-        title={spotlightPiece.name}
-        artist={spotlightPiece.artist}
+      <Image
+        src={spotlightPiece.imageSource}
+        alt={`Artwork titled ${spotlightPiece.title} by ${spotlightPiece.artist}`}
+        width={500}
+        height={500}
+        priority
       />
+      <p>{spotlightPiece.name}</p>
     </div>
   );
 }

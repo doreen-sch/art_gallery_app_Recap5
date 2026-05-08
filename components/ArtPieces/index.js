@@ -30,7 +30,9 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
       ))}
       <Spotlight artPieces={artPieces} />
     </StyledArtList>
+</ul>
   );
+
 }
 
 const StyledArtList = styled.ul`

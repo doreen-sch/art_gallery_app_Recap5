@@ -7,11 +7,9 @@ export default function ArtPieceDetails({ selectedArtPiece }) {
   return (
     <article>
       <nav>
-        <Link href="/">
-          {" "}
+            {" "}
           {/* just navigate to the root or homepage */}
-          <button type="button">← Back to List</button>
-        </Link>
+          <Link href="/">← Back to List</Link>
       </nav>
       <figure>
         <Image

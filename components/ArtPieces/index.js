@@ -17,6 +17,11 @@ const fetcher = async (url) => {
 };
 
 export default function ArtPieces({}) {
+import fetcher from "@/lib/fetcher";
+
+const URL = "https://example-apis.vercel.app/api/art";
+
+export default function ArtPieces() {
   const { data: artPieces, error, isLoading } = useSWR(URL, fetcher);
 
   if (isLoading || !artPieces) return <p>Loading artworks...</p>;
@@ -30,6 +35,7 @@ export default function ArtPieces({}) {
             image={piece.imageSource}
             title={piece.name}
             artist={piece.artist}
+            slug={piece.slug}
           />
         </li>
       ))}

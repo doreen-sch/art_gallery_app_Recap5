@@ -8,9 +8,8 @@ import fetcher from "@/lib/fetcher";
 const URL = "https://example-apis.vercel.app/api/art";
 
 export default function App({ Component, pageProps }) {
-
   const { data: artPieces, error, isLoading } = useSWR(URL, fetcher);
- const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Initialize state from localStorage
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
@@ -31,7 +30,6 @@ export default function App({ Component, pageProps }) {
     }
   }, [artPiecesInfo, isMounted]);
 
-
   function handleToggleFavorite(slug) {
     setArtPiecesInfo((info) => {
       const piece = info.find((p) => p.slug === slug);
@@ -44,18 +42,20 @@ export default function App({ Component, pageProps }) {
     });
   }
   //To prevent server-side rendering errors
-if (!isMounted) return null;
+  if (!isMounted) return null;
 
   return (
-    <> <SWRConfig
-        value={{ fetcher }}
-      >
+    <>
+      {" "}
+      <SWRConfig value={{ fetcher }}>
         <GlobalStyle />
-        <Component {...pageProps} 
-        pieces={artPieces}
-         /* artPieces={artPieces}   */
+        <Component
+          {...pageProps}
+          pieces={artPieces}
+          /* artPieces={artPieces}   */
           artPiecesInfo={artPiecesInfo}
-          onToggleFavorite={handleToggleFavorite}/>
+          onToggleFavorite={handleToggleFavorite}
+        />
         <Navigation />
       </SWRConfig>
     </>

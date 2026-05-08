@@ -13,7 +13,10 @@ export default function Navigation() {
       <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
         Gallery
       </StyledLink>
-       <StyledLink href="/favorites" $isActive={router.pathname === "/favorites"}>
+      <StyledLink
+        href="/favorites"
+        $isActive={router.pathname === "/favorites"}
+      >
         Favorites
       </StyledLink>
     </StyledNavigation>
@@ -25,13 +28,21 @@ const StyledNavigation = styled.nav`
   justify-content: space-around;
   height: 2rem;
   background-color: lightgrey;
-  width: 100%;
+  width: calc(100% - 32px);
+  max-width: 700px;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 999px;
+  padding: 35px 24px;
 `;
 
 const StyledLink = styled(Link)`
+  color: darkblue;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;

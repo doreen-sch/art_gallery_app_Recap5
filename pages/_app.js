@@ -1,5 +1,6 @@
 import GlobalStyle from "../styles";
 import Navigation from "@/components/Navigation";
+import { SWRConfig } from "swr";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
@@ -46,15 +47,17 @@ export default function App({ Component, pageProps }) {
 if (!isMounted) return null;
 
   return (
-    <>
-          <GlobalStyle />
+    <> <SWRConfig
+        value={{ fetcher }}
+      >
+        <GlobalStyle />
         <Component {...pageProps} 
         pieces={artPieces}
          /* artPieces={artPieces}   */
           artPiecesInfo={artPiecesInfo}
           onToggleFavorite={handleToggleFavorite}/>
         <Navigation />
-    
+      </SWRConfig>
     </>
   );
 }

@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "../FavoriteButton";
 
-export default function ArtPiecesPreview({ image, title, artist, slug }) {
+export default function ArtPiecesPreview({ image, title, artist, slug, isFavorite, onToggleFavorite }) {
   console.log(title);
   return (
     <figure>
+        <FavoriteButton isFavorite={isFavorite} onToggleFavorite={onToggleFavorite} />
       <Link href={`/art-pieces/${slug}`}>
       <Image
         src={image}

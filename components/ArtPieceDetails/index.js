@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import styled from "styled-components";
+import ColorPallette from "../ColorPallette/ColorPallette";
 
 export default function ArtPieceDetails({ selectedArtPiece }) {
   return (
-   
     <article>
-         <nav>
-        <Link href="/"> {/* just navigate to the root or homepage */}
-          <button type="button">← Back to List</button>
-        </Link>
+      <nav>
+            {" "}
+          {/* just navigate to the root or homepage */}
+          <Link href="/">← Back to List</Link>
       </nav>
       <figure>
         <Image
@@ -16,22 +17,27 @@ export default function ArtPieceDetails({ selectedArtPiece }) {
           alt={`Artwork titled ${selectedArtPiece.name} by ${selectedArtPiece.artist}`}
           width={800}
           height={600}
+          priority
         />
+        <ColorPallette selectedArtPiece={selectedArtPiece} />
         <figcaption>
           <h1>{selectedArtPiece.name}</h1>
           <p>Artist: {selectedArtPiece.artist}</p>
         </figcaption>
       </figure>
 
-      <ul>
+      <StyledArtInfoList>
         <li>
           <strong>Year:</strong> {selectedArtPiece.year}
         </li>
         <li>
           <strong>Genre:</strong> {selectedArtPiece.genre}
         </li>
-       
-      </ul>
+      </StyledArtInfoList>
     </article>
   );
 }
+
+const StyledArtInfoList = styled.ul`
+  list-style: none;
+`;

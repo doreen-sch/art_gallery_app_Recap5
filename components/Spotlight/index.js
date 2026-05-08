@@ -20,11 +20,6 @@ export default function Spotlight({ pieces }) {
         alt={`Artwork titled ${spotlightPiece.title} by ${spotlightPiece.artist}`}
         width={500}
         height={500}
-        style={{
-          maxWidth: "800px",
-          width: "100%",
-          height: "auto",
-        }}
         priority
       />
 

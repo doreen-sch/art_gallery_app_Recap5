@@ -22,11 +22,6 @@ export default function ArtPiecesPreview({
           alt={`Artwork titled ${title} by ${artist}`}
           width={500}
           height={500}
-          style={{
-            maxWidth: "800px",
-            width: "100%",
-            height: "auto",
-          }}
           priority
         />
       </Link>

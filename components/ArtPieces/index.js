@@ -1,6 +1,8 @@
+import styled from "styled-components";
+//import fetcher from "@/lib/fetcher";
 import useSWR from "swr";
 import ArtPiecesPreview from "../ArtPiecesPreview";
-import fetcher from "@/lib/fetcher";
+import Spotlight from "../Spotlight";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -26,6 +28,11 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
           />
         </li>
       ))}
-    </ul>
+      <Spotlight artPieces={artPieces} />
+    </StyledArtList>
   );
 }
+
+const StyledArtList = styled.ul`
+  list-style: none;
+`;

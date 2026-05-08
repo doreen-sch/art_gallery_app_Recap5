@@ -19,6 +19,7 @@ export default function ArtPieceDetails({ selectedArtPiece }) {
           alt={`Artwork titled ${selectedArtPiece.name} by ${selectedArtPiece.artist}`}
           width={800}
           height={600}
+          priority
         />
         <ColorPallette selectedArtPiece={selectedArtPiece} />
         <figcaption>

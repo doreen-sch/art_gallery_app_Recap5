@@ -1,16 +1,21 @@
-import { uid } from "react";
+import styled from "styled-components";
 
 export default function ColorPallette({ selectedArtPiece }) {
-  console.log("colors", selectedArtPiece.colors);
   const colors = selectedArtPiece.colors;
   return (
-    <section>
+    <StyledColorSection>
       {colors.map((color) => (
         <div
-          key={uid}
-          style={{ width: "20px", height: "20px", backgroundColor: color }}
+          key={color}
+          style={{ width: "40px", height: "40px", backgroundColor: color }}
         />
       ))}
-    </section>
+    </StyledColorSection>
   );
 }
+
+const StyledColorSection = styled.section`
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+`;

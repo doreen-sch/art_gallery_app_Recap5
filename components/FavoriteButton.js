@@ -1,11 +1,20 @@
+import styled from "styled-components";
+
 export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
   return (
-    <button 
-      onClick={onToggleFavorite} 
+    <StyledButton
+      onClick={onToggleFavorite}
       aria-label="favorite-button"
-      style={{ backgroundColor: isFavorite ? "coral" : "white" }}
+      // style={{ backgroundColor: isFavorite ? "coral" : "white" }}
     >
-      {isFavorite ? "❤️" : "🤍"}
-    </button>
+      {isFavorite ? "❤️" : "🩶"}
+    </StyledButton>
   );
 }
+
+const StyledButton = styled.button`
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+  cursor: pointer;
+`;

@@ -27,7 +27,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem 0;
   width: 100%;
   max-width: 700px;
   padding: 0 1rem;

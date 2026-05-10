@@ -21,7 +21,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
   const isFavorite = spotlightInfo?.isFavorite ?? false;
 
   return (
-    <section>
+    <section style={{ paddingTop: 20 }}>
       <StyledSpotlight $isFavorite={isFavorite}>
         <Image
           src={spotlightPiece.imageSource}

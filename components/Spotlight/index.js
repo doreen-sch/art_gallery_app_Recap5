@@ -50,6 +50,8 @@ const StyledSpotlight = styled.article`
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  font-size: 1rem;
+  color: #0e2e2a;
 `;
 
 const StyledSpotlightCaption = styled.article`

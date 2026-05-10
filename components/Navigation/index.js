@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
@@ -8,16 +9,35 @@ export default function Navigation() {
   return (
     <StyledNavigation>
       <StyledLink href="/" $isActive={router.pathname === "/"}>
-        Spotlight
+        <StyledWrapper>
+          <Image src="/images/seestern.png" alt="Home" width={24} height={24} />
+        </StyledWrapper>
+        <span>Spotlight</span>
       </StyledLink>
       <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
-        Art Pieces
+        <StyledWrapper>
+          <Image
+            src="/images/gallery.png"
+            alt="Overview"
+            width={24}
+            height={24}
+          />
+        </StyledWrapper>
+        <span>Art Pieces </span>
       </StyledLink>
       <StyledLink
         href="/favorites"
         $isActive={router.pathname === "/favorites"}
       >
-        Favorites
+        <StyledWrapper>
+          <Image
+            src="/images/heart.png"
+            alt="Favorites"
+            width={24}
+            height={24}
+          />
+        </StyledWrapper>
+        <span>Favorites </span>
       </StyledLink>
     </StyledNavigation>
   );
@@ -37,12 +57,17 @@ const StyledNavigation = styled.nav`
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   border-radius: 999px;
-  padding: 35px 24px;
+  padding: 45px 24px;
 `;
 
 const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   color: #1c5e56;
   text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1.4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,4 +76,10 @@ const StyledLink = styled(Link)`
   text-align: center;
   font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
   background-color: ${({ $isActive }) => ($isActive ? "gray" : "transparent")};
+`;
+
+const StyledWrapper = styled.div`
+  border-radius: 50%;
+  background-color: ${({ $isActive }) => ($isActive ? "black" : "transparent")};
+  display: inline-flex;
 `;

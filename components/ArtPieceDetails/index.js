@@ -15,9 +15,9 @@ export default function ArtPieceDetails({
       <nav>
         {" "}
         {/* just navigate to the root or homepage */}
-        <Link href="/">← Back to List</Link>
+        <Link href="/">← All Art Pieces</Link>
       </nav>
-      <figure>
+      <StyledFigure>
         <Image
           src={selectedArtPiece.imageSource}
           alt={`Artwork titled ${selectedArtPiece.name} by ${selectedArtPiece.artist}`}
@@ -26,11 +26,11 @@ export default function ArtPieceDetails({
           priority
         />
         <ColorPallette selectedArtPiece={selectedArtPiece} />
-        <figcaption>
+        <StyledFigcaption>
           <h1>{selectedArtPiece.name}</h1>
           <p>Artist: {selectedArtPiece.artist}</p>
-        </figcaption>
-      </figure>
+        </StyledFigcaption>
+      </StyledFigure>
 
       <StyledArtInfoList>
         <li>
@@ -49,11 +49,27 @@ export default function ArtPieceDetails({
   );
 }
 
+const StyledFigure = styled.figure`
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: ${({ $isFavorite }) => ($isFavorite ? "#fce5e8" : "white")};
+  width: 500px;
+`;
+
+const StyledFigcaption = styled.figcaption`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const StyledDetailsContainer = styled.article`
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
   padding-bottom: 100px;
+  font-size: 1rem;
+  color: #0e2e2a;
 
   /* This ensures the text and form elements stay aligned together */
   display: flex;

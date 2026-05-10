@@ -22,11 +22,16 @@ export default function FavoritesPage({
           onToggleFavorite={onToggleFavorite}
         />
       ) : (
-        <p>
-          No favorites saved yet.Go to the gallery and click some hearts to make
-          it as favourite!
-        </p>
+        <StyledParagraph>
+          No favorites saved yet. Explore the Art Gallery and tap ❤️ to add your
+          favorite pieces.
+        </StyledParagraph>
       )}
     </>
   );
 }
+
+const StyledParagraph = styled.p`
+  font-size: 1rem;
+  margin: 2rem 3rem;
+`;

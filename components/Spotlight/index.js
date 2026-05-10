@@ -30,7 +30,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
           height={500}
           priority
         />
-        <StyledSpotlightCaption style={{ padding: "1rem" }}>
+        <StyledSpotlightCaption>
           <p>{spotlightPiece.artist}</p>
           <FavoriteButton
             isFavorite={isFavorite}

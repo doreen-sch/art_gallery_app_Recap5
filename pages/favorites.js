@@ -32,6 +32,9 @@ export default function FavoritesPage({
 }
 
 const StyledParagraph = styled.p`
+  justify-self: center;
   font-size: 1rem;
+  line-height: 1.6;
   margin: 2rem 3rem;
+  color: #0e2e2a;
 `;

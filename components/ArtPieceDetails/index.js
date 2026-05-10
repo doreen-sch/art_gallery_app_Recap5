@@ -10,12 +10,13 @@ export default function ArtPieceDetails({
   comments,
   onSubmitComment,
 }) {
+  console.log("selected", selectedArtPiece);
   return (
     <StyledDetailsContainer>
       <nav>
         {" "}
         {/* just navigate to the root or homepage */}
-        <Link href="/">← All Art Pieces</Link>
+        <StyledBackLink href="/">← All Art Pieces</StyledBackLink>
       </nav>
       <StyledFigure>
         <Image
@@ -48,6 +49,11 @@ export default function ArtPieceDetails({
     </StyledDetailsContainer>
   );
 }
+
+const StyledBackLink = styled(Link)`
+  margin: 3rem 0 0 2rem;
+  text-decoration: none;
+`;
 
 const StyledFigure = styled.figure`
   border-radius: 8px;

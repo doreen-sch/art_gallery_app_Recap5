@@ -3,31 +3,41 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <StyledHeader className="headline">
-      <StyledHeading>Art Gallery</StyledHeading>
-      <StyledButton type="button" aria-label="shell icon for profile settings">
-        <Image src="/images/shell.png" alt="Icon" width={30} height={30} />
-      </StyledButton>
-    </StyledHeader>
+    <StyledHeaderWrapper>
+      <StyledHeader className="headline">
+        <StyledHeading>Art Gallery</StyledHeading>
+        <StyledButton
+          type="button"
+          aria-label="shell icon for profile settings"
+        >
+          <Image src="/images/shell.png" alt="Icon" width={30} height={30} />
+        </StyledButton>
+      </StyledHeader>
+    </StyledHeaderWrapper>
   );
 }
 
+const StyledHeaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
 const StyledHeader = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  align-items: center;
+  margin: 2rem 0;
+  width: 100%;
   max-width: 700px;
-  top: 20px;
-  left: 50%;
+  padding: 0 1rem;
+  box-sizing: border-box;
 `;
 
 const StyledHeading = styled.h1`
-  justify-content: center;
   color: #0e2e2a;
-  padding: 20px;
-  max-width: 600px;
   margin: 0 auto;
+  font-size: 2rem;
 `;
 
 const StyledButton = styled.button`

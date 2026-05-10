@@ -1,4 +1,5 @@
 import ArtPieces from "@/components/ArtPieces";
+import Heading from "@/components/Header";
 import styled from "styled-components";
 
 export default function FavoritesPage({
@@ -13,7 +14,7 @@ export default function FavoritesPage({
 
   return (
     <>
-      <StyledHeading>My Favorites</StyledHeading>
+      <Heading />
       {favoritePieces?.length > 0 ? (
         <ArtPieces
           pieces={favoritePieces}
@@ -29,8 +30,3 @@ export default function FavoritesPage({
     </>
   );
 }
-
-const StyledHeading = styled.h1`
-  text-align: center;
-  color: #333333;
-`;

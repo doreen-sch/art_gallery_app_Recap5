@@ -1,11 +1,12 @@
 import ArtPieces from "@/components/ArtPieces";
+import Heading from "@/components/Header";
 import styled from "styled-components";
 
 export default function Gallery({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
     <div>
       {" "}
-      <StyledHeading>Gallery</StyledHeading>
+      <Heading />
       <ArtPieces
         pieces={pieces}
         artPiecesInfo={artPiecesInfo}
@@ -14,8 +15,3 @@ export default function Gallery({ pieces, artPiecesInfo, onToggleFavorite }) {
     </div>
   );
 }
-
-const StyledHeading = styled.h1`
-  text-align: center;
-  color: #333333;
-`;

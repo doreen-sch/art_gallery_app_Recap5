@@ -11,7 +11,7 @@ export default function Navigation() {
         Spotlight
       </StyledLink>
       <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
-        Gallery
+        Art Pieces
       </StyledLink>
       <StyledLink
         href="/favorites"
@@ -41,7 +41,7 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  color: darkblue;
+  color: #1c5e56;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -49,5 +49,6 @@ const StyledLink = styled(Link)`
   width: 50%;
   height: 100%;
   text-align: center;
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
   background-color: ${({ $isActive }) => ($isActive ? "gray" : "transparent")};
 `;

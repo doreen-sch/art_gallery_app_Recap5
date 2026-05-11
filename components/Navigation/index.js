@@ -5,39 +5,40 @@ import { useRouter } from "next/router";
 
 export default function Navigation() {
   const router = useRouter();
+  console.log(router.pathname);
 
   return (
     <StyledNavigation>
       <StyledLink href="/" $isActive={router.pathname === "/"}>
-        <StyledWrapper>
+        <StyledActiveBox $isActive={router.pathname === "/"}>
           <Image src="/images/seestern.png" alt="Home" width={24} height={24} />
-        </StyledWrapper>
-        <span>Spotlight</span>
+          <span>Spotlight</span>
+        </StyledActiveBox>
       </StyledLink>
       <StyledLink href="/gallery" $isActive={router.pathname === "/gallery"}>
-        <StyledWrapper>
+        <StyledActiveBox $isActive={router.pathname === "/gallery"}>
           <Image
             src="/images/gallery_new.png"
             alt="Overview"
             width={24}
             height={24}
           />
-        </StyledWrapper>
-        <span>Art Pieces </span>
+          <span>Art Pieces </span>
+        </StyledActiveBox>
       </StyledLink>
       <StyledLink
         href="/favorites"
         $isActive={router.pathname === "/favorites"}
       >
-        <StyledWrapper>
+        <StyledActiveBox $isActive={router.pathname === "/favorites"}>
           <Image
             src="/images/heart_new.png"
             alt="Favorites"
             width={24}
             height={24}
           />
-        </StyledWrapper>
-        <span>Favorites </span>
+          <span>Favorites </span>
+        </StyledActiveBox>
       </StyledLink>
     </StyledNavigation>
   );
@@ -46,9 +47,14 @@ export default function Navigation() {
 const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-around;
-  height: 2rem;
+  align-items: stretch;
+  /* height: 2rem; */
   background-color: lightgrey;
+  box-shadow:
+    0 1px 10px #4a7375,
+    inset 0 0 10px rgba(255, 255, 255, 0.5);
   width: calc(100% - 32px);
+  height: 5rem;
   max-width: 700px;
   position: fixed;
   bottom: 20px;
@@ -57,13 +63,13 @@ const StyledNavigation = styled.nav`
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   border-radius: 999px;
-  padding: 45px 24px;
+  overflow: hidden;
 `;
 
 const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   color: #1c5e56;
   text-decoration: none;
   font-size: 1.25rem;
@@ -71,15 +77,19 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 33.33%;
   height: 100%;
   text-align: center;
-  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
-  background-color: ${({ $isActive }) => ($isActive ? "gray" : "transparent")};
 `;
 
-const StyledWrapper = styled.div`
-  border-radius: 50%;
-  background-color: ${({ $isActive }) => ($isActive ? "black" : "transparent")};
-  display: inline-flex;
+const StyledActiveBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ $isActive }) =>
+    $isActive ? "#bee4e6" : "transparent"};
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;

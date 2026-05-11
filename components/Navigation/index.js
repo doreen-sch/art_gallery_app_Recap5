@@ -10,12 +10,12 @@ export default function Navigation() {
       <StyledLink href="/" $isActive={router.pathname === "/"}>
         Spotlight
       </StyledLink>
-      <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
+      <StyledLink href="/gallery" $isActive={router.pathname === "/gallery"}>
         Gallery
       </StyledLink>
       <StyledLink
         href="/favorites"
-        $isActive={router.pathname === "/_favorites"}
+        $isActive={router.pathname === "/favorites"}
       >
         Favorites
       </StyledLink>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton";
 import { useState } from "react";
+import { useMemo } from "react";
 
 function getRandomArtPiece(artworks) {
   if (!artworks || artworks.length === 0) return null;
@@ -10,7 +11,9 @@ function getRandomArtPiece(artworks) {
 }
 
 export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
-  const [spotlightPiece] = useState(() => getRandomArtPiece(pieces));
+  // const [spotlightPiece] = useState(() => getRandomArtPiece(pieces));
+
+  const spotlightPiece = useMemo(() => getRandomArtPiece(pieces), [pieces]);
 
   if (!spotlightPiece) return <p>Loading ...</p>;
 

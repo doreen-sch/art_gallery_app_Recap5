@@ -10,7 +10,6 @@ function getRandomArtPiece(artworks) {
 }
 
 export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
-  // console.log("kunst", pieces);
   const [spotlightPiece] = useState(() => getRandomArtPiece(pieces));
 
   if (!spotlightPiece) return <p>Loading ...</p>;
@@ -21,7 +20,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
   const isFavorite = spotlightInfo?.isFavorite ?? false;
 
   return (
-    <ul>
+    <section style={{ paddingTop: 20 }}>
       <StyledSpotlight $isFavorite={isFavorite}>
         <Image
           src={spotlightPiece.imageSource}
@@ -30,7 +29,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
           height={500}
           priority
         />
-        <StyledSpotlightCaption style={{ padding: "1rem" }}>
+        <StyledSpotlightCaption>
           <p>{spotlightPiece.artist}</p>
           <FavoriteButton
             isFavorite={isFavorite}
@@ -38,7 +37,7 @@ export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
           />
         </StyledSpotlightCaption>
       </StyledSpotlight>
-    </ul>
+    </section>
   );
 }
 
@@ -47,11 +46,16 @@ const StyledSpotlight = styled.article`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   background-color: ${({ $isFavorite }) => ($isFavorite ? "#fce5e8" : "white")};
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #0e2e2a;
 `;
 
 const StyledSpotlightCaption = styled.article`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
 `;

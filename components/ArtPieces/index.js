@@ -35,4 +35,11 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
 
 const StyledArtList = styled.ul`
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  color: #0e2e2a;
 `;

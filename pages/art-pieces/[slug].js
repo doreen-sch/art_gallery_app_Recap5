@@ -4,8 +4,8 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import fetcher from "@/lib/fetcher";
 
 const URL = "https://example-apis.vercel.app/api/art";
-
-export default function DetailsPage() {
+// Accept artPiecesInfo and onSubmitComment as props
+export default function DetailsPage({artPiecesInfo, onSubmitComment} ) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -16,6 +16,10 @@ export default function DetailsPage() {
 
   const selectedArtPiece = data?.find((piece) => piece.slug === slug);
 
+    // to find the extra info (like comments) for this specific piece using the slug
+  const pieceInfo = artPiecesInfo.find((p) => p.slug === slug);
+  const comments = pieceInfo?.comments || [];
+
   if (!selectedArtPiece) {
     return (
       <div>
@@ -25,5 +29,9 @@ export default function DetailsPage() {
     );
   }
 
-  return <ArtPieceDetails selectedArtPiece={selectedArtPiece} />;
+  return <ArtPieceDetails 
+      selectedArtPiece={selectedArtPiece}
+      // Pass the comments and the submit function down to the details view
+      comments={comments}
+      onSubmitComment={onSubmitComment} />;
 }

@@ -10,7 +10,6 @@ function getRandomArtPiece(artworks) {
 }
 
 export default function Spotlight({ pieces, artPiecesInfo, onToggleFavorite }) {
-  // console.log("kunst", pieces);
   const [spotlightPiece] = useState(() => getRandomArtPiece(pieces));
 
   if (!spotlightPiece) return <p>Loading ...</p>;

@@ -15,7 +15,8 @@ const StyledColorSection = styled.section`
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
-  gap: 20px;
+  margin-left: 1rem;
+  gap: 15px;
 `;
 
 const ColorBox = styled.div`

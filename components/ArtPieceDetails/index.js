@@ -10,7 +10,6 @@ export default function ArtPieceDetails({
   comments,
   onSubmitComment,
 }) {
-  console.log("selected", selectedArtPiece);
   return (
     <StyledDetailsContainer>
       <nav>

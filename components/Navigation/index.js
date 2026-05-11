@@ -17,7 +17,7 @@ export default function Navigation() {
       <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
         <StyledWrapper>
           <Image
-            src="/images/gallery.png"
+            src="/images/gallery_new.png"
             alt="Overview"
             width={24}
             height={24}
@@ -31,7 +31,7 @@ export default function Navigation() {
       >
         <StyledWrapper>
           <Image
-            src="/images/heart.png"
+            src="/images/heart_new.png"
             alt="Favorites"
             width={24}
             height={24}

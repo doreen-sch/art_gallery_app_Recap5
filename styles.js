@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-        margin: 0;
+        margin-bottom: 150px;
     overflow-x: hidden;
 
     font-family: sans-serif;

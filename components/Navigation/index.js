@@ -14,7 +14,7 @@ export default function Navigation() {
         </StyledWrapper>
         <span>Spotlight</span>
       </StyledLink>
-      <StyledLink href="/_gallery" $isActive={router.pathname === "/_gallery"}>
+      <StyledLink href="/gallery" $isActive={router.pathname === "/gallery"}>
         <StyledWrapper>
           <Image
             src="/images/gallery_new.png"

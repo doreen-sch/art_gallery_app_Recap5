@@ -48,7 +48,6 @@ const StyledNavigation = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  /* height: 2rem; */
   background-color: lightgrey;
   box-shadow:
     0 1px 10px #4a7375,
@@ -74,7 +73,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.25rem;
   line-height: 1.4;
-  display: flex;
   align-items: center;
   justify-content: center;
   width: 33.33%;
